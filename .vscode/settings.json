@@ -1,0 +1,12 @@
+{
+  // Terminal settings that persist between Cursor restarts
+  "terminal.integrated.defaultProfile.osx": "zsh",
+  "terminal.integrated.profiles.osx": {
+    "zsh": {
+      "path": "/bin/zsh"
+    }
+  },
+  // Persist terminal settings
+  "terminal.integrated.persistentSessionReviveProcess": "onExit",
+  "terminal.integrated.enablePersistentSessions": true
+}
