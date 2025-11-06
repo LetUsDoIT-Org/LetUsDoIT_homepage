@@ -1,4 +1,17 @@
 import Image from "next/image";
+import {
+  Zap,
+  TrendingUp,
+  Network,
+  Cloud,
+  Monitor,
+  MessageSquare,
+  Sparkles,
+  Smartphone,
+  Globe,
+  Target,
+  type LucideIcon
+} from "lucide-react";
 
 export default function Home() {
   return (
@@ -132,67 +145,82 @@ export default function Home() {
               {
                 title: "Process Automation",
                 description: "Streamline workflows and remove manual steps to boost productivity",
-                icon: "⚡"
+                icon: Zap,
+                color: "text-primary-blue"
               },
               {
                 title: "Business Process Analysis & Lean Optimization",
                 description: "Make operations more efficient through systematic analysis",
-                icon: "📊"
+                icon: TrendingUp,
+                color: "text-primary-green"
               },
               {
                 title: "Business Process Modeling",
                 description: "Mapping and modeling process flows for clarity and optimization",
-                icon: "🗺️"
+                icon: Network,
+                color: "text-primary-orange"
               },
               {
                 title: "Microsoft 365 Configuration",
                 description: "Expert setup and configuration of Microsoft 365 environments",
-                icon: "☁️"
+                icon: Cloud,
+                color: "text-primary-blue"
               },
               {
                 title: "Digital Solutions",
                 description: "Implementation, customization, and maintenance of digital platforms",
-                icon: "💻"
+                icon: Monitor,
+                color: "text-primary-navy"
               },
               {
                 title: "Chatbot Implementation",
                 description: "Automated communication and self-service solutions",
-                icon: "🤖"
+                icon: MessageSquare,
+                color: "text-primary-green"
               },
               {
                 title: "AI Integration",
                 description: "Integrate artificial intelligence into apps and digital solutions",
-                icon: "🧠"
+                icon: Sparkles,
+                color: "text-primary-orange"
               },
               {
                 title: "App Development",
                 description: "Building apps from scratch, including MVP and PoC projects",
-                icon: "📱"
+                icon: Smartphone,
+                color: "text-primary-blue"
               },
               {
                 title: "Website Maintenance",
                 description: "Configuration and maintenance in Drupal or Strapi",
-                icon: "🌐"
+                icon: Globe,
+                color: "text-primary-green"
               },
               {
                 title: "Agile Project Management",
                 description: "SCRUM certified—structured execution and delivery",
-                icon: "🎯"
+                icon: Target,
+                color: "text-primary-orange"
               },
-            ].map((service, index) => (
-              <div
-                key={index}
-                className="bg-gray-50 p-6 rounded-lg hover:shadow-lg transition-shadow border border-gray-100"
-              >
-                <div className="text-4xl mb-4">{service.icon}</div>
-                <h3 className="text-xl font-semibold text-primary-navy mb-3">
-                  {service.title}
-                </h3>
-                <p className="text-gray-600">
-                  {service.description}
-                </p>
-              </div>
-            ))}
+            ].map((service, index) => {
+              const IconComponent = service.icon;
+              return (
+                <div
+                  key={index}
+                  className="bg-gray-50 p-6 rounded-lg hover:shadow-lg transition-shadow border border-gray-100"
+                >
+                  <div className="mb-4">
+                    <IconComponent className={`w-10 h-10 ${service.color}`} strokeWidth={1.5} />
+                  </div>
+                  <h3 className="text-xl font-semibold text-primary-navy mb-3">
+                    {service.title}
+                  </h3>
+                  <p className="text-gray-600">
+                    {service.description}
+                  </p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
