@@ -289,9 +289,6 @@ export default function Home() {
                     height={100}
                     className="mx-auto mb-4"
                   />
-                  <p className="text-white font-semibold text-lg">
-                    Let Us Do IT!
-                  </p>
                   <p className="text-gray-200 mt-2">
                     Your partner in digital transformation
                   </p>
