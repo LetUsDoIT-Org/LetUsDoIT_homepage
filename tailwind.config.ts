@@ -11,6 +11,7 @@ const config: Config = {
       colors: {
         primary: {
           navy: "#003D5C",
+          "navy-dark": "#023759",
           blue: "#00A8E8",
           green: "#4CAF50",
           orange: "#FF9800",

@@ -22,7 +22,7 @@ export default function Home() {
           <div className="flex justify-between items-center h-20">
             <div className="flex-shrink-0">
               <Image
-                src="/images/logo/LetUsDoIT Logo_01.jpeg"
+                src="/images/logo/LetUsDoIT-logo-light.jpeg"
                 alt="LetUsDoIT ApS Logo"
                 width={180}
                 height={60}
@@ -79,11 +79,11 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-primary-navy mb-4">
-              Experienced IT Professionals
+              Experienced IT Professional
             </h2>
             <div className="w-24 h-1 bg-primary-orange mx-auto mb-6"></div>
             <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-              LetUsDoIT ApS consists of highly experienced IT professionals with many years of experience from some of the world's largest IT companies.
+              LetUsDoIT ApS brings years of IT expertise and experience from one of the world's largest IT companies, delivering proven solutions with a personal touch.
             </p>
           </div>
 
@@ -108,7 +108,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold text-primary-navy mb-3 text-center">Deep Expertise</h3>
               <p className="text-gray-600 text-center">
-                Years of experience from global IT leaders brings proven best practices to your projects.
+                Years of experience from one of the world's leading IT companies brings proven best practices to your projects.
               </p>
             </div>
 
@@ -230,7 +230,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Let's Work Together
+              Let Us Do IT - Together
             </h2>
             <div className="w-24 h-1 bg-primary-orange mx-auto mb-6"></div>
             <p className="text-lg text-gray-200">
@@ -280,19 +280,19 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="bg-gradient-to-br from-primary-blue/10 to-primary-green/10 rounded-xl p-6 flex items-center justify-center">
+              <div className="bg-primary-navy-dark rounded-xl p-6 flex items-center justify-center">
                 <div className="text-center">
                   <Image
-                    src="/images/logo/LetUsDoIT Logo_01.jpeg"
+                    src="/images/logo/LetUsDoIT-logo-dark.jpeg"
                     alt="LetUsDoIT ApS Logo"
                     width={200}
                     height={100}
                     className="mx-auto mb-4"
                   />
-                  <p className="text-primary-navy font-semibold text-lg">
+                  <p className="text-white font-semibold text-lg">
                     Let Us Do IT!
                   </p>
-                  <p className="text-gray-600 mt-2">
+                  <p className="text-gray-200 mt-2">
                     Your partner in digital transformation
                   </p>
                 </div>
