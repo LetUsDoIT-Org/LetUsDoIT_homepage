@@ -33,13 +33,21 @@ Format: `{type}/{issue-number}-{slug-from-title}`
 
 ## Workflow
 
-### 1. Fetch Latest Dev
+### 1. Fetch Latest Dev and Verify Sync
 
 ```bash
 git fetch origin dev
 ```
 
-Then ask user: `Please run: git pull origin dev` — wait for confirmation.
+Then verify local dev matches remote dev:
+
+```bash
+LOCAL_DEV=$(git rev-parse dev)
+REMOTE_DEV=$(git rev-parse origin/dev)
+```
+
+- If `$LOCAL_DEV == $REMOTE_DEV` → local dev is up to date, proceed to step 2.
+- If they differ → ask user: `Your local dev is behind origin/dev. Please run: git pull origin dev` — wait for confirmation, then re-verify.
 
 ### 2. Look Up Issue
 
@@ -129,13 +137,13 @@ When an issue lives in a different repo than the code:
 
 **Never:**
 - Create branch without fetching dev first
-- Skip requesting user to pull
+- Skip verifying local dev matches remote dev
 - Create PR to main (always dev)
 - Tell user to commit — YOU create the commit
 - Give up after checking only one repo for the issue
 
 **Always:**
-- Fetch and pull dev before creating branch
+- Fetch dev and verify local matches remote before creating branch
 - Use `{type}/{number}-{slug}` format
 - Create branch from `origin/dev`
 - Ask user to push with `-u` flag after branch creation
