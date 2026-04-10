@@ -25,7 +25,15 @@
       "Bash(gh label:*)",
       "Bash(gh auth:*)",
       "Bash(gh run:*)",
-      "WebSearch"
+      "WebSearch",
+      "Write(**/tmp/*)",
+      "Write(**/tmp/**)",
+      "Edit(**/tmp/*)",
+      "Edit(**/tmp/**)",
+      "Write(**/.gh-graphql/*)",
+      "Write(**/.gh-graphql/**)",
+      "Edit(**/.gh-graphql/*)",
+      "Edit(**/.gh-graphql/**)"
     ]
   }
 }
