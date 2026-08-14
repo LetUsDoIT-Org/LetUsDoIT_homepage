@@ -1,41 +1,60 @@
 ---
 name: create-pr
-description: Create a pull request from dev to main. Creates PR first with placeholder, reads GitHub's commits for accurate description, then updates. Use when user says "create pr", "/pr", "make a pr", or "pull request".
-model: sonnet
+description: Create a pull request with accurate descriptions. Supports feature→dev and dev→main. Use when user says "create pr", "/pr", "make a pr", or "pull request".
+model: claude-sonnet-4-6
 ---
 
 # Create Pull Request
 
-Create PRs from `dev` to `main` with accurate descriptions using a **create-first, describe-second** approach.
+Create PRs with accurate descriptions using a **create-first, describe-second** approach.
 
 **Announce:** "I'm using the create-pr skill to create a pull request."
 
 ## Auto-Detection
 
-Detect org and repo from git remote:
+Detect org and repo (separate Bash calls, no pipes):
 ```bash
-REMOTE=$(git remote get-url origin)
-ORG=$(echo "$REMOTE" | sed -E 's/.*[:/]([^/]+)\/[^/]+(\.git)?$/\1/')
-REPO=$(echo "$REMOTE" | sed -E 's/.*[:/][^/]+\/([^/]+)(\.git)?$/\1/')
+gh repo view --json owner --jq '.owner.login'
 ```
+```bash
+gh repo view --json name --jq '.name'
+```
+```bash
+git branch --show-current
+```
+
+## Branch Targets
+
+Determine head and base from context:
+
+| Current branch | Head | Base | Title prefix |
+|---------------|------|------|-------------|
+| `dev` | `dev` | `main` | "Release:" |
+| `feature/*`, `bug/*`, `task/*` | current branch | `dev` | from commits |
+| User specifies | as specified | as specified | from commits |
+
+If the user says "from X to Y", use those. Otherwise infer from the table above.
 
 ## Why Create-First
 
-- Local git refs (`origin/main`, `origin/dev`) may be stale — Claude cannot fetch
+- Local git refs may be stale — Claude cannot fetch
 - GitHub automatically calculates the exact diff when a PR is created
 - Reading the PR's commits gives the authoritative list
 
 ## Workflow
 
+### Step 0: Check whether a PR already exists
+
+```bash
+gh pr list --repo "$ORG/$REPO" --head "$HEAD" --state all --json number,title,author,isDraft
+```
+
+One call, and it prevents three separate failures: `gh pr create` erroring out *after* you have drafted a full description, silently overwriting a colleague's draft PR, and reviewing a bare branch diff when the PR's own description was available all along. **A user saying "it's not a PR yet" is a hint, not a fact** — verify it.
+
 ### Step 1: Create PR with Placeholder
 
 ```bash
-gh pr create \
-  --repo "$ORG/$REPO" \
-  --title "Release: dev to main" \
-  --head dev \
-  --base main \
-  --body "Generating description..."
+gh pr create --repo "$ORG/$REPO" --title "PR: $HEAD to $BASE" --head "$HEAD" --base "$BASE" --body "Generating description..."
 ```
 
 Extract the PR number from the returned URL.
@@ -57,7 +76,8 @@ gh pr view <pr-number> --repo "$ORG/$REPO" --json commits
 
 **PR Title:**
 - Single feature/fix: use that commit message
-- Multiple changes: summary like "Release: [main feature] and fixes"
+- Multiple changes: summary like "feat: [main feature] and fixes"
+- dev→main: "Release: [summary]"
 
 **PR Body:**
 ```markdown
@@ -80,11 +100,12 @@ Closes #[issue-number] (if applicable)
 
 ### Step 4: Update PR
 
+Use a HEREDOC for the body to avoid security warnings from `#` in markdown:
 ```bash
-gh pr edit <pr-number> \
-  --repo "$ORG/$REPO" \
-  --title "<generated-title>" \
-  --body "<generated-body>"
+gh pr edit <pr-number> --repo "$ORG/$REPO" --title "<generated-title>" --body "$(cat <<'EOF'
+<generated-body-here>
+EOF
+)"
 ```
 
 ### Step 5: Report
@@ -96,25 +117,16 @@ Pull request created:
 - [brief summary]
 ```
 
-## Quick Reference
-
-| Step | Action | Command |
-|------|--------|---------|
-| 1 | Create PR | `gh pr create --base main --head dev` |
-| 2 | Read commits | `gh pr view --json commits` |
-| 3 | Generate description | Parse commit messages |
-| 4 | Update PR | `gh pr edit` |
-
 ## Red Flags
 
 **Never:**
+- Use piped shell commands (echo | sed, etc.) — use gh --jq instead
 - Use local git refs for branch comparison
-- Create PR from main to dev (always dev → main)
 - Leave PR with placeholder description
 - Guess at what commits are included
 
 **Always:**
+- Use separate Bash calls for each command (no bundling)
 - Create PR first with minimal body
 - Read commits from GitHub's PR response
 - Update PR with accurate description
-- Target `base: "main"` in PR creation
