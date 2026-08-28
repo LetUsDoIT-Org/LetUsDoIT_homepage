@@ -1,0 +1,162 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-28T00:00:00.000Z",
+  "title": "Design System: LetUsDoIT",
+  "extensions": {
+    "colorMeta": {
+      "drafting-ink": {
+        "role": "primary",
+        "displayName": "Drafting Ink",
+        "canonical": "#002E45",
+        "tonalRamp": ["#001521", "#002E45", "#0B4462", "#2A5C77", "#4A6274", "#8199A8", "#B9C8D2", "#EDF2F5"]
+      },
+      "modelling-canvas": {
+        "role": "neutral",
+        "displayName": "Modelling Canvas",
+        "canonical": "#F1F5F7",
+        "tonalRamp": ["#2C3A42", "#455761", "#607685", "#8199A8", "#A9BAC6", "#DCE5EA", "#F1F5F7", "#FFFFFF"]
+      },
+      "sequence-blue": {
+        "role": "secondary",
+        "displayName": "Sequence Blue",
+        "canonical": "#00A8E8",
+        "tonalRamp": ["#00293A", "#004160", "#00688F", "#008ABF", "#00A8E8", "#4FC4F2", "#9BDDF8", "#DDF3FD"]
+      },
+      "automated-green": {
+        "role": "tertiary",
+        "displayName": "Automated Green",
+        "canonical": "#4CAF50",
+        "tonalRamp": ["#123715", "#1B5E20", "#2E7D32", "#3E9E45", "#4CAF50", "#81C784", "#B7E1B9", "#EDF7EE"]
+      },
+      "action-orange": {
+        "role": "tertiary",
+        "displayName": "Action Orange",
+        "canonical": "#FF9800",
+        "tonalRamp": ["#3D2400", "#6B3F00", "#A85A00", "#D47800", "#FF9800", "#FFB74D", "#FFD79B", "#FFF3E0"]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The page's one thesis line. Archivo pushed to 123 on its 62-125 width axis so it reads as signage and notation rather than as a marketing headline."
+      },
+      "headline": { "displayName": "Headline", "purpose": "Lane headings, width-constrained so they break as intended." },
+      "title": { "displayName": "Title", "purpose": "Service names, method step names, form headings. Body face, not display." },
+      "body": { "displayName": "Body", "purpose": "Prose, capped at a 68ch measure." },
+      "label": { "displayName": "Label", "purpose": "Rotated lane names in the gutter, contact keys, scrub endpoints. Uppercase, wide tracking." }
+    },
+    "shadows": [
+      { "name": "pool-lift", "value": "0 1px 16px rgba(0,46,69,0.06)", "purpose": "Sets the pool off the gridded canvas. Used exactly once." },
+      { "name": "action-lift", "value": "0 2px 10px rgba(0,46,69,0.2)", "purpose": "Primary buttons, paired with a 1px upward translate on hover." },
+      { "name": "token-lift", "value": "0 2px 6px rgba(0,46,69,0.22)", "purpose": "The scrub thumb, so it reads as a grabbable token." }
+    ],
+    "motion": [
+      { "name": "settle", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Exponential ease-out. The single curve the whole page uses." },
+      { "name": "model-hold", "value": "2600ms", "purpose": "How long the tangled model holds before resolving, so the mess is read first." },
+      { "name": "model-resolve", "value": "1900ms", "purpose": "The one authored motion moment. Skipped entirely under prefers-reduced-motion." }
+    ],
+    "breakpoints": [
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The visitor's action. Orange fill with navy text rather than the usual white-on-orange, and square like all chrome.",
+      "html": "<button class=\"ds-btn-primary\">Få din proces kortlagt</button>",
+      "css": ".ds-btn-primary { background: #FF9800; color: #002E45; padding: 14px 28px; border: none; border-radius: 0; font-family: 'Schibsted Grotesk', ui-sans-serif, system-ui, sans-serif; font-weight: 600; font-size: 1rem; box-shadow: 0 2px 10px rgba(0,46,69,0.2); transition: transform 300ms cubic-bezier(0.16,1,0.3,1); cursor: pointer; } .ds-btn-primary:hover { transform: translateY(-1px); } .ds-btn-primary:focus-visible { outline: 2px solid #00688F; outline-offset: 3px; }"
+    },
+    {
+      "name": "Text Link",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "The only secondary action style. There is no outlined button variant.",
+      "html": "<a class=\"ds-link\" href=\"#\">Se hvordan jeg arbejder</a>",
+      "css": ".ds-link { color: #00688F; font-family: 'Schibsted Grotesk', ui-sans-serif, system-ui, sans-serif; font-weight: 600; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.22em; text-decoration-color: rgba(0,168,232,0.5); } .ds-link:hover { text-decoration-color: #00688F; } .ds-link:focus-visible { outline: 2px solid #00688F; outline-offset: 3px; }"
+    },
+    {
+      "name": "Input Field",
+      "kind": "input",
+      "refersTo": "input-field",
+      "description": "Square, 1px rule stroke. Optional fields say so in the label rather than relying on an asterisk convention.",
+      "html": "<label class=\"ds-field-label\" for=\"ds-navn\">Navn</label><input class=\"ds-input\" id=\"ds-navn\" type=\"text\">",
+      "css": ".ds-field-label { display: block; margin-bottom: 6px; font-family: 'Schibsted Grotesk', ui-sans-serif, system-ui, sans-serif; font-weight: 600; font-size: 0.875rem; color: #002E45; } .ds-input { width: 100%; background: #FFFFFF; color: #002E45; border: 1px solid #B9C8D2; border-radius: 0; padding: 10px 12px; font-family: 'Schibsted Grotesk', ui-sans-serif, system-ui, sans-serif; font-size: 1rem; transition: border-color 200ms; } .ds-input:hover { border-color: #4A6274; } .ds-input:focus-visible { outline: 2px solid #00688F; outline-offset: 3px; } .ds-input[aria-invalid=\"true\"] { border-color: #A85A00; }"
+    },
+    {
+      "name": "Static Chip",
+      "kind": "chip",
+      "refersTo": "chip-static",
+      "description": "Secondary service labels. Carries no state; these are not filters.",
+      "html": "<span class=\"ds-chip\">Microsoft 365-opsætning</span>",
+      "css": ".ds-chip { display: inline-block; background: #FFFFFF; color: #0B4462; border: 1px solid #B9C8D2; border-radius: 0; padding: 6px 12px; font-family: 'Schibsted Grotesk', ui-sans-serif, system-ui, sans-serif; font-size: 0.875rem; }"
+    },
+    {
+      "name": "Flow Navigation Node",
+      "kind": "nav",
+      "refersTo": "nav-node",
+      "description": "Navigation rendered as the model's sequence flow. The lit node is the token's current position.",
+      "html": "<div class=\"ds-flow\"><span class=\"ds-flow-line\"></span><a class=\"ds-flow-node ds-flow-node--active\" href=\"#\"><span class=\"ds-flow-dot\"></span><span class=\"ds-flow-label\">Metoden</span></a></div>",
+      "css": ".ds-flow { position: relative; display: flex; padding: 12px 0; } .ds-flow-line { position: absolute; left: 0; right: 0; top: 19px; height: 1px; background: #B9C8D2; } .ds-flow-node { position: relative; display: flex; flex-direction: column; align-items: center; gap: 8px; text-decoration: none; } .ds-flow-dot { display: block; width: 15px; height: 15px; border-radius: 999px; border: 2px solid #B9C8D2; background: #FFFFFF; transition: all 500ms cubic-bezier(0.16,1,0.3,1); } .ds-flow-node--active .ds-flow-dot { border-color: #00688F; background: #00688F; transform: scale(1.1); } .ds-flow-label { font-family: 'Schibsted Grotesk', ui-sans-serif, system-ui, sans-serif; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.14em; color: #002E45; }"
+    },
+    {
+      "name": "Lane Name",
+      "kind": "custom",
+      "refersTo": "lane-name",
+      "description": "A section's name, rotated in the lane gutter against the lane edge. Never placed above a heading as a kicker.",
+      "html": "<div class=\"ds-gutter\"><span class=\"ds-lane-name\">Problemet</span></div>",
+      "css": ".ds-gutter { display: flex; align-items: flex-start; justify-content: center; width: 64px; padding-top: 56px; border-right: 1px solid #B9C8D2; } .ds-lane-name { writing-mode: vertical-rl; transform: rotate(180deg); letter-spacing: 0.18em; text-transform: uppercase; font-family: 'Schibsted Grotesk', ui-sans-serif, system-ui, sans-serif; font-size: 0.6875rem; font-weight: 600; color: #4A6274; }"
+    },
+    {
+      "name": "BPMN Task Node",
+      "kind": "custom",
+      "refersTo": "model-task",
+      "description": "The one rounded shape in the system, because a BPMN task genuinely is a rounded rectangle. The service variant carries a drawn gear marker and the automated green.",
+      "html": "<svg width=\"300\" height=\"70\" viewBox=\"0 0 300 70\"><rect x=\"10\" y=\"8\" width=\"126\" height=\"54\" rx=\"6\" fill=\"#FFFFFF\" stroke=\"#002E45\" stroke-width=\"1.5\"/><text x=\"73\" y=\"31\" text-anchor=\"middle\" font-size=\"11.5\" font-weight=\"500\" fill=\"#002E45\">Tastes ind i</text><text x=\"73\" y=\"45\" text-anchor=\"middle\" font-size=\"11.5\" font-weight=\"500\" fill=\"#002E45\">økonomisystemet</text><rect x=\"160\" y=\"8\" width=\"126\" height=\"54\" rx=\"6\" fill=\"#EDF7EE\" stroke=\"#2E7D32\" stroke-width=\"1.5\"/><g transform=\"translate(169 17)\" stroke=\"#2E7D32\" stroke-width=\"1.3\" fill=\"none\"><circle cx=\"5\" cy=\"5\" r=\"2.1\"/><path d=\"M5 0.4v1.6M5 8v1.6M0.4 5h1.6M8 5h1.6M1.7 1.7l1.1 1.1M7.2 7.2l1.1 1.1M8.3 1.7L7.2 2.8M1.7 8.3l1.1-1.1\"/></g><text x=\"223\" y=\"31\" text-anchor=\"middle\" font-size=\"11.5\" font-weight=\"500\" fill=\"#2E7D32\">AI læser ordren</text><text x=\"223\" y=\"45\" text-anchor=\"middle\" font-size=\"11.5\" font-weight=\"500\" fill=\"#2E7D32\">og opretter den</text></svg>",
+      "css": "svg text { font-family: 'Schibsted Grotesk', ui-sans-serif, system-ui, sans-serif; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Working Model",
+    "overview": "This is not a marketing page with a flowchart in it. It is a BPMN model of the visitor's own business, and the page adopts that notation as its actual interface language rather than as an illustration style. The visitor lands on a modelling canvas; a pool floats on it; the pool is divided into lanes; the lanes carry the content. Navigation is the model's own sequence flow, and the reader's scroll position is the token travelling it.\n\nThe register is precise and operational, never clinical. The audience is a Danish SMB owner who is drowning in manual work and cannot tell AI substance from AI hype, so the system's whole job is to look like something a serious practitioner drew rather than something a marketing team commissioned. Colour is notation, not decoration. Geometry is derived, not drawn: the hero's connectors are computed from live node positions, so when the model resolves it resolves because the nodes moved, not because an animation played over the top.\n\nConfirmed anti-references, rejected on purpose: the AI-category hero of glowing neural mesh over a violet gradient; the centred hero above three equal icon-heading-text cards; cyan-on-near-black; and faked physicality of any kind.",
+    "keyCharacteristics": [
+      "Notation as interface, not as illustration",
+      "Colour used as law, with exactly one meaning per hue",
+      "Square everything, except BPMN task nodes which are legitimately rounded",
+      "Flat by default; one soft ambient shadow lifts the pool off the canvas",
+      "A single authored motion moment, and no scattered hover effects",
+      "Derived geometry: connectors computed from node positions"
+    ],
+    "rules": [
+      { "name": "The Palette Law", "body": "Blue means sequence flow. Green means a step a machine has taken over. Orange means something the visitor does. A colour is never used for emphasis, accent, decoration, or hierarchy. Audit test: point at any coloured pixel and name which of the three it means. If you cannot, it is wrong.", "section": "colors" },
+      { "name": "The Two-Value Rule", "body": "Every law colour ships as a pair: the bright value for navy ground, the -ink value for the canvas. Text never uses the bright value on light ground; it fails AA at 2.1-2.8:1.", "section": "colors" },
+      { "name": "The Gutter Rule", "body": "A section's name is set rotated in the lane gutter against the lane edge, the way a modelling tool sets a lane name. It is never placed above a heading as a kicker or eyebrow.", "section": "typography" },
+      { "name": "The Tabular Rule", "body": "Every number a reader might compare carries tabular figures. Numbers are data, and data lines up.", "section": "typography" },
+      { "name": "The No-Costume-Mono Rule", "body": "There is no monospace face in this system. 'Technical' is carried by the notation and the expanded display width, not by a font wearing a lab coat.", "section": "typography" },
+      { "name": "The Contained-Scroll Rule", "body": "Anything wider than its column scrolls inside its own overflow-x-auto container, and that container carries min-w-0. The page body never scrolls horizontally.", "section": "layout" },
+      { "name": "The Flat-Pool Rule", "body": "Surfaces inside the pool are flat. Elevation is reserved for the pool itself and for things the visitor can act on.", "section": "elevation" },
+      { "name": "The Square-Except-Tasks Rule", "body": "If it is chrome, it is square. If it is a BPMN task node, it is 6px. There is no third radius, and no side-stripe borders above 1px anywhere.", "section": "shapes" },
+      { "name": "The Derived Geometry Rule", "body": "Connectors are computed from node positions. Never hand-draw a second set of paths for the resolved state; if the two states disagree, the geometry is wrong, not the drawing.", "section": "components" },
+      { "name": "The Halo Rule", "body": "Any label that can pass over a line carries a halo in its own node's fill colour. This is how diagrams and maps have always set labels.", "section": "components" }
+    ],
+    "dos": [
+      "Do give every colour exactly one meaning and use the -ink variant for text on the canvas.",
+      "Do keep the gridded canvas visible around the pool at every breakpoint.",
+      "Do put section names rotated in the lane gutter.",
+      "Do put min-w-0 on any grid item containing a horizontal scroller.",
+      "Do theme the browser's own surfaces — selection, caret, accent-color, scrollbar, focus ring, underline offset — from the palette.",
+      "Do label illustrative data as illustrative, in the notation's own voice."
+    ],
+    "donts": [
+      "Don't spend a law colour on decoration. Green is not an accent rule and orange is not a highlighter.",
+      "Don't put a kicker or eyebrow above a heading. The lane gutter is where a section name goes.",
+      "Don't use bright Sequence Blue as text on the navy lanes; cyan-on-dark is a category tell and it fails contrast.",
+      "Don't introduce a third corner radius, or a side-stripe border above 1px.",
+      "Don't add a second animated moment. The model resolving is the page's one authored motion; the navigation token is state, not motion.",
+      "Don't build a row of equal icon-heading-text cards. Content here is expressed as definition rows, lanes, and notation.",
+      "Don't invent proof. There are no client names, logos, testimonials, or metrics, and no slot should be designed that would need one."
+    ]
+  }
+}
