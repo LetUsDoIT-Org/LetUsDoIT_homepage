@@ -27,6 +27,9 @@
       "Bash(gh run:*)",
       "Bash(gh search:*)",
       "WebSearch",
+      "Bash(python3:*)",
+      "Bash(node:*)",
+      "Bash(mkdir:*)",
       "Write(**/tmp/*)",
       "Write(**/tmp/**)",
       "Edit(**/tmp/*)",
@@ -34,7 +37,9 @@
       "Write(**/.gh-graphql/*)",
       "Write(**/.gh-graphql/**)",
       "Edit(**/.gh-graphql/*)",
-      "Edit(**/.gh-graphql/**)"
+      "Edit(**/.gh-graphql/**)",
+      "Bash(rm /Users/letusdoit/repos/*/tmp/*)",
+      "Bash(rm /Users/letusdoit/repos/*/*/tmp/*)"
     ]
   }
 }
