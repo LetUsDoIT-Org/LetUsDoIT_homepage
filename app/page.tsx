@@ -96,7 +96,7 @@ export default function Home() {
             <div className="min-w-0 px-5 py-14 md:px-12 md:py-20">
               <div className="grid gap-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:items-center lg:gap-14">
                 <div>
-                  <h1 className="display text-[2.6rem] font-bold leading-[1.02] text-ink sm:text-[3.4rem] lg:text-[3.9rem]">
+                  <h1 className="display display-hero font-bold leading-[1.02] text-ink">
                     AI virker ikke på en proces, som ingen har tegnet.
                   </h1>
                   <p className="mt-7 max-w-measure text-lg leading-relaxed text-ink-soft">

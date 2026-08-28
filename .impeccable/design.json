@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-08-28T00:00:00.000Z",
+  "generatedAt": "2026-08-28T23:59:00.000Z",
   "title": "Design System: LetUsDoIT",
   "extensions": {
     "colorMeta": {
@@ -38,12 +38,13 @@
     "typographyMeta": {
       "display": {
         "displayName": "Display",
-        "purpose": "The page's one thesis line. Archivo pushed to 123 on its 62-125 width axis so it reads as signage and notation rather than as a marketing headline."
+        "purpose": "The page's one thesis line. Archivo pushed to 123 on its 62-125 width axis so it reads as signage and notation rather than as a marketing headline. Sized by the .display-hero class, which ramps smoothly rather than stepping at breakpoints."
       },
       "headline": { "displayName": "Headline", "purpose": "Lane headings, width-constrained so they break as intended." },
       "title": { "displayName": "Title", "purpose": "Service names, method step names, form headings. Body face, not display." },
       "body": { "displayName": "Body", "purpose": "Prose, capped at a 68ch measure." },
-      "label": { "displayName": "Label", "purpose": "Rotated lane names in the gutter, contact keys, scrub endpoints. Uppercase, wide tracking." }
+      "label": { "displayName": "Label", "purpose": "Contact keys, scrub endpoints, navigation section names. Uppercase, wide tracking." },
+      "label-lane": { "displayName": "Label (lane)", "purpose": "The rotated lane name in the gutter. One step smaller and one step wider than a normal label, because it is read sideways." }
     },
     "shadows": [
       { "name": "pool-lift", "value": "0 1px 16px rgba(0,46,69,0.06)", "purpose": "Sets the pool off the gridded canvas. Used exactly once." },

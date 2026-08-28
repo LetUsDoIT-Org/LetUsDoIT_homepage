@@ -18,7 +18,7 @@ colors:
 typography:
   display:
     fontFamily: "Archivo, ui-sans-serif, system-ui, sans-serif"
-    fontSize: "clamp(2.6rem, 5vw, 3.9rem)"
+    fontSize: "clamp(2.6rem, 1.6rem + 3.2vw, 3.9rem)"
     fontWeight: 700
     lineHeight: 1.02
     letterSpacing: "-0.035em"
@@ -183,8 +183,10 @@ copy at normal width with Nordic warmth and correct Danish diacritics. The
 contrast is structural, so the pairing survives being set in one colour.
 
 ### Hierarchy
-- **Display** (700, `clamp(2.6rem, 5vw, 3.9rem)`, 1.02, `-0.035em`, `wdth 123`):
-  The page's single thesis line. One per page.
+- **Display** (700, `clamp(2.6rem, 1.6rem + 3.2vw, 3.9rem)`, 1.02, `-0.035em`,
+  `wdth 123`): The page's single thesis line. One per page, carried by the
+  `.display-hero` class so the ramp has one home and never drifts into
+  per-breakpoint steps.
 - **Headline** (700, `clamp(1.875rem, 3vw, 2.6rem)`, 1.08, `wdth 123`): Lane
   headings. Constrained by `max-w-[16ch]`–`[19ch]` so they break as intended.
 - **Title** (600, 1.25–1.5rem, 1.3): Service names, step names, form section

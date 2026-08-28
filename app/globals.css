@@ -115,6 +115,12 @@
     text-wrap: balance;
   }
 
+  /* The one display size, ramped smoothly rather than jumping between
+     breakpoint steps. Lives here so the type ramp has a single home. */
+  .display-hero {
+    font-size: clamp(2.6rem, 1.6rem + 3.2vw, 3.9rem);
+  }
+
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;
