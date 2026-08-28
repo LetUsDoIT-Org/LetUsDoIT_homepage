@@ -2,27 +2,199 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --primary-navy: #003D5C;
-  --primary-blue: #00A8E8;
-  --primary-green: #4CAF50;
-  --primary-orange: #FF9800;
+@layer base {
+  :root {
+    --canvas: #f1f5f7;
+    --pool: #ffffff;
+    --grid: #dce5ea;
+    --rule: #b9c8d2;
+    --ink: #002e45;
+    --ink-soft: #0b4462;
+    --ink-mute: #4a6274;
+    --flow: #00a8e8;
+    --flow-ink: #00688f;
+    --auto: #4caf50;
+    --auto-ink: #2e7d32;
+    --act: #ff9800;
+    --act-ink: #a85a00;
+
+    /* The modelling grid. Every lane edge and node sits on it. */
+    --grid-step: 24px;
+  }
+
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* The canvas grid of a modelling tool, not a decorative texture. */
+    background-color: var(--canvas);
+    background-image:
+      linear-gradient(to right, var(--grid) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
+    background-size: var(--grid-step) var(--grid-step);
+  }
+
+  body {
+    color: var(--ink);
+    font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Browser surfaces. These ship with defaults belonging to no design
+     system, so they are themed from the palette like everything else. */
+  ::selection {
+    background-color: var(--flow);
+    color: #ffffff;
+  }
+
+  :root {
+    caret-color: var(--flow-ink);
+    accent-color: var(--flow-ink);
+    scrollbar-color: var(--rule) var(--canvas);
+    scrollbar-width: thin;
+  }
+
+  ::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--canvas);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--rule);
+    border: 3px solid var(--canvas);
+    border-radius: 999px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--ink-mute);
+  }
+
+  /* Focus is a sequence-flow highlight, in the flow colour, by law. */
+  :focus-visible {
+    outline: 2px solid var(--flow-ink);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  .on-ink :focus-visible {
+    outline-color: var(--flow);
+  }
+
+  a {
+    color: inherit;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.22em;
+  }
+
+  /* Measurements in the model are data, so they get tabular figures
+     rather than a monospace face worn as a costume. */
+  .measure-num {
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.01em;
+  }
+
+  /* The display voice is the body grotesque pushed wide. Expanded type
+     reads as notation and signage rather than as a marketing headline. */
+  .display {
+    font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+    /* Near the top of Archivo's 62–125 width axis. At 112 it was a nudge and
+       read as the body face at a larger size; the two-face system only earns
+       its keep when the display voice is visibly a different width. */
+    font-variation-settings: "wdth" 123;
+    letter-spacing: -0.035em;
+    text-wrap: balance;
+  }
+
+  /* The one display size, ramped smoothly rather than jumping between
+     breakpoint steps. Lives here so the type ramp has a single home. */
+  .display-hero {
+    font-size: clamp(2.6rem, 1.6rem + 3.2vw, 3.9rem);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
+@layer components {
+  /* The scrub control is a sequence flow, and its thumb is the token that
+     travels one. Native range input, so keyboard and screen readers work. */
+  .scrub {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 22px;
+    background: transparent;
+    cursor: ew-resize;
+  }
 
-html {
-  scroll-behavior: smooth;
-}
+  .scrub::-webkit-slider-runnable-track {
+    height: 2px;
+    background: var(--rule);
+    border-radius: 2px;
+  }
 
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  .scrub::-moz-range-track {
+    height: 2px;
+    background: var(--rule);
+    border-radius: 2px;
+  }
+
+  .scrub::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    margin-top: -9px;
+    border-radius: 999px;
+    background: var(--pool);
+    border: 2px solid var(--flow-ink);
+    box-shadow: 0 2px 6px rgba(0, 46, 69, 0.22);
+    transition: transform 160ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .scrub::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 999px;
+    background: var(--pool);
+    border: 2px solid var(--flow-ink);
+    box-shadow: 0 2px 6px rgba(0, 46, 69, 0.22);
+  }
+
+  .scrub:hover::-webkit-slider-thumb,
+  .scrub:focus-visible::-webkit-slider-thumb {
+    transform: scale(1.12);
+  }
+
+  /* A lane name, set in the lane gutter the way a modelling tool sets it:
+     rotated against the lane edge, never floating above the heading. */
+  .lane-name {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-size: 0.6875rem;
+    font-weight: 600;
+  }
 }

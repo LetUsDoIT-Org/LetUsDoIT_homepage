@@ -38,3 +38,16 @@ next-env.d.ts
 # Claude scratch dirs (pre-approved for Write/Edit, not committed)
 tmp/
 .gh-graphql/
+
+# Design tooling installed via `npx impeccable install` and the taste-skill
+# installer. Roughly 7MB of vendored skill files plus regenerable review
+# artifacts. skills-lock.json IS committed, so the exact versions can be
+# reinstalled reproducibly without vendoring them here.
+.impeccable/*
+!.impeccable/design.json
+.agents/
+.codex/
+.claude/skills/impeccable/
+.github/skills/
+.github/agents/
+.github/hooks/
