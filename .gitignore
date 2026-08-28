@@ -51,3 +51,8 @@ tmp/
 .github/skills/
 .github/agents/
 .github/hooks/
+
+# Added by `vercel link`. The negation matters: .env* on its own would also
+# swallow .env.example, which is a committed template with no secrets in it.
+.env*
+!.env.example
