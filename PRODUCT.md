@@ -83,9 +83,9 @@ Technical constraints:
 
 Confirmed available:
 - SCRUM certification.
-- Multiple years of experience at a very large international IT company.
-  **The employer's name is pending from the user** and is to be stated plainly once supplied;
-  the previous site's phrase "one of the world's largest IT companies" is not to be reused.
+- Multiple years at **IBM**, working on business processes and IT implementation at scale.
+  Confirmed by the user and to be stated plainly by name; the previous site's phrase
+  "one of the world's largest IT companies" is not to be reused.
 
 Confirmed absent — must not be fabricated:
 - No nameable clients, and no client logos.
@@ -107,6 +107,12 @@ filled with invented content.
 4. **One person, named and reachable.** The solo nature is an asset. Directness and a real name
    outperform corporate distance for this audience.
 5. **Never invent proof.** Absent evidence stays absent. The design must work without it.
+6. **Advice and build are one offer, not two.** The mapping is the first step, never the
+   deliverable. Any copy that leaves a reader thinking this is a consultant who produces
+   diagrams and hands them over has failed, however accurate it is.
+7. **Stay recognisable beyond one industry.** Illustrative processes must be selectable or
+   generic. A single worked example makes every visitor whose work looks different assume
+   the offer is not for them.
 
 ## Accessibility & Inclusion
 

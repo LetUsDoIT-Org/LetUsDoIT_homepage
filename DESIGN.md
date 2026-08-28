@@ -45,8 +45,14 @@ typography:
     fontSize: "0.75rem"
     fontWeight: 600
     letterSpacing: "0.14em"
+  label-lane:
+    fontFamily: "Schibsted Grotesk, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "0.6875rem"
+    fontWeight: 600
+    letterSpacing: "0.18em"
 rounded:
   square: "0px"
+  hairline: "2px"
   task: "6px"
   token: "999px"
 spacing:
@@ -184,8 +190,11 @@ contrast is structural, so the pairing survives being set in one colour.
 - **Title** (600, 1.25–1.5rem, 1.3): Service names, step names, form section
   headings. Body face, not display.
 - **Body** (400, 1–1.125rem, 1.625): Prose, capped at a 68ch measure.
-- **Label** (600, 0.6875–0.75rem, `0.14em`–`0.18em`, uppercase): Lane names in
-  the gutter, contact detail keys, the scrub endpoints.
+- **Label** (600, 0.75rem, `0.14em`, uppercase): Contact detail keys, the scrub
+  endpoints, navigation section names.
+- **Label (lane)** (600, 0.6875rem, `0.18em`, uppercase): The rotated lane name
+  in the gutter. One step smaller and one step wider than a normal label,
+  because it is read sideways.
 
 ### Named Rules
 
@@ -256,6 +265,11 @@ for the pool itself and for things the visitor can act on.
 Square by default, everywhere: buttons, inputs, chips, callouts, the pool, the
 lanes, the logo panel. Zero radius is the house form.
 
+Two hairline exceptions exist below the level of any visible shape, both at
+2px: the focus ring's corner, so a ring around a square control does not look
+mitred, and the scrub track. Neither is a container radius and neither should
+be promoted to one.
+
 The one exception is real and load-bearing: **BPMN task nodes carry a 6px
 radius**, because a task in BPMN notation *is* a rounded rectangle. Events are
 circles (1.5px stroke for start, 3.5px for end, which is the notation's own way
@@ -268,8 +282,9 @@ lead services. Coloured borders on callouts are 1px and run the full way round.
 ### Named Rules
 
 **The Square-Except-Tasks Rule.** If it is chrome, it is square. If it is a BPMN
-task node, it is 6px. There is no third radius, and no side-stripe borders above
-1px anywhere.
+task node, it is 6px. If it is a token, it is a full circle. The only other
+radius in the system is the 2px hairline on focus rings and the scrub track,
+and no container may borrow it. No side-stripe borders above 1px anywhere.
 
 ## Components
 

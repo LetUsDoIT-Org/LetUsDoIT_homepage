@@ -80,15 +80,17 @@ export default function Home() {
       {/* The pool floats on the modelling canvas. The padding here is what
           lets the canvas and its grid actually show, rather than being
           covered edge to edge by full-bleed section fills. */}
-      <div className="px-3 py-3 lg:px-10 lg:py-10">
-      <div className="mx-auto max-w-[1300px] border border-rule shadow-[0_1px_16px_rgba(0,46,69,0.06)]">
+      {/* No top padding or top border here: the sticky bar above supplies the
+          pool's top edge, so the two meet as one continuous frame. */}
+      <div className="px-3 pb-3 lg:px-10 lg:pb-10">
+      <div className="mx-auto max-w-[1300px] border border-t-0 border-rule shadow-[0_1px_16px_rgba(0,46,69,0.06)]">
 
       <main id="top">
         {/* Hero: the model is the argument, so it opens the page. */}
         <section className="bg-pool">
           <div className="mx-auto grid max-w-[1280px] grid-cols-[36px_1fr] md:grid-cols-[64px_1fr]">
             <div className="flex items-start justify-center border-r border-rule pt-14 text-ink-mute">
-              <span className="lane-name">Ordreproces</span>
+              <span className="lane-name">Procesmodel</span>
             </div>
 
             <div className="min-w-0 px-5 py-14 md:px-12 md:py-20">
@@ -98,17 +100,19 @@ export default function Home() {
                     AI virker ikke på en proces, som ingen har tegnet.
                   </h1>
                   <p className="mt-7 max-w-measure text-lg leading-relaxed text-ink-soft">
-                    Jeg kortlægger, hvordan arbejdet faktisk foregår hos jer, og
-                    bygger derefter det, en maskine kan overtage. Rådgivning og
-                    implementering — ikke pilotprojekter, der aldrig når i drift.
+                    Jeg tegner processen, og jeg bygger løsningen. Kortlægningen
+                    er ikke leverancen — den er grunden til, at det, jeg bygger,
+                    stadig kører, når jeg er gået hjem.
                   </p>
 
                   <div className="mt-9 flex flex-wrap items-center gap-x-8 gap-y-4">
+                    {/* Same words as the action in the header: one action,
+                        one name, all the way through. */}
                     <a
                       href="#kontakt"
                       className="bg-act px-7 py-3.5 font-semibold text-ink shadow-[0_2px_10px_rgba(0,46,69,0.2)] transition-transform duration-300 ease-settle hover:-translate-y-px"
                     >
-                      Få din proces kortlagt
+                      Book en gennemgang
                     </a>
                     <a
                       href="#metoden"
@@ -239,20 +243,17 @@ export default function Home() {
               </h2>
               <div className="mt-6 max-w-measure space-y-5 text-lg leading-relaxed text-canvas/80">
                 <p>
-                  {/* TODO(simon): erstat med det rigtige firmanavn og antal år. */}
-                  Jeg har mange års erfaring fra{" "}
-                  {/* Dashed outline, not a highlighter: orange means the
-                      visitor's action and cannot be spent on an editor's note. */}
-                  <mark className="border border-dashed border-canvas/60 bg-transparent px-1.5 text-canvas">
-                    [FIRMANAVN INDSÆTTES]
-                  </mark>
-                  , hvor jeg arbejdede med forretningsprocesser og
-                  IT-implementering i stor skala. LetUsDoIT er mit eget selskab.
+                  Jeg har mange års erfaring fra <strong className="font-semibold text-canvas">IBM</strong>, hvor
+                  jeg arbejdede med forretningsprocesser og IT-implementering i
+                  stor skala — for kunder, hvor tingene skulle virke i drift,
+                  ikke bare i en præsentation. LetUsDoIT er mit eget selskab.
                 </p>
                 <p>
-                  Det betyder, at det er mig, der kommer ud, mig der tegner, og
-                  mig I taler med hele vejen. Ingen konsulent nummer to, der
-                  overtager sagen efter salgsmødet.
+                  Det betyder, at det er mig, der kommer ud, mig der tegner,
+                  mig der bygger det, og mig I taler med hele vejen. Ingen
+                  konsulent nummer to, der overtager sagen efter salgsmødet, og
+                  ingen aflevering af en rapport, I selv skal finde ud af at
+                  føre ud i livet.
                 </p>
                 <p>
                   Jeg er SCRUM-certificeret og arbejder agilt, fordi

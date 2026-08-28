@@ -44,14 +44,17 @@ export default function ProcessPath() {
     activeIndex < 0 ? 0 : (activeIndex / (STEPS.length - 1)) * 100;
 
   return (
-    // Solid, not translucent: a blur under a 95%-opaque fill renders nothing.
-    <header className="sticky top-0 z-50 border-b border-rule bg-pool">
-      {/* The inner box matches the pool's own 1300px frame and page inset, so
-          the bar reads as the pool's top edge rather than a slab laid over it. */}
-      <div className="px-3 lg:px-10">
+    // The bar IS the pool's top edge, not a white slab laid over the canvas:
+    // it carries the page inset and the pool's own border, and its inner
+    // structure repeats a lane exactly — gutter column plus content column —
+    // so the logo starts on the same line as every heading below it.
+    <header className="sticky top-0 z-50 bg-canvas px-3 pt-3 lg:px-10 lg:pt-10">
+      <div className="mx-auto max-w-[1300px] border border-rule bg-pool">
+      <div className="mx-auto grid max-w-[1280px] grid-cols-[36px_1fr] md:grid-cols-[64px_1fr]">
+      <div className="border-r border-rule" />
       <nav
         aria-label="Sektioner"
-        className="mx-auto flex max-w-[1300px] items-center gap-6 px-5 py-3 md:px-12"
+        className="flex items-center gap-6 px-5 py-3 md:px-12"
       >
         <a
           href="#top"
@@ -124,6 +127,7 @@ export default function ProcessPath() {
           Book en gennemgang
         </a>
       </nav>
+      </div>
       </div>
     </header>
   );
