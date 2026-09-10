@@ -27,9 +27,6 @@
       "Bash(gh run:*)",
       "Bash(gh search:*)",
       "WebSearch",
-      "Bash(python3:*)",
-      "Bash(node:*)",
-      "Bash(mkdir:*)",
       "Write(**/tmp/*)",
       "Write(**/tmp/**)",
       "Edit(**/tmp/*)",
@@ -38,8 +35,15 @@
       "Write(**/.gh-graphql/**)",
       "Edit(**/.gh-graphql/*)",
       "Edit(**/.gh-graphql/**)",
+      "Bash(python3:*)",
+      "Bash(node:*)",
+      "Bash(mkdir:*)",
       "Bash(rm /Users/letusdoit/repos/*/tmp/*)",
       "Bash(rm /Users/letusdoit/repos/*/*/tmp/*)"
+    ],
+    "additionalDirectories": [
+      "/Users/letusdoit/Documents/Claude/Projects/LetUsDoIT ApS - finance/",
+      "/Users/letusdoit/Library/CloudStorage/OneDrive-Deltebiblioteker–LetUsDoITApS/LetUsDoIT - Intranet - Documents/Projekter/"
     ]
   }
 }
