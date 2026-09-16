@@ -51,3 +51,7 @@ tmp/
 .github/skills/
 .github/agents/
 .github/hooks/
+
+# Claude worktrees (never commit — a committed worktree becomes a phantom submodule)
+.claude/worktrees/
+.worktrees/
